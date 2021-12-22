@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { CreateUserService } from '@users/services';
+import { CreateUserService } from '@users/presentation/services';
 import {
   CreateUserResolver,
   GetUserResolver,

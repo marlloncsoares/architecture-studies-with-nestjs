@@ -1,6 +1,6 @@
 import { UserOutput } from '@users/infra/graphql/output';
 import { Query, Resolver } from '@nestjs/graphql';
-import { CreateUserService } from '@users/services';
+import { CreateUserService } from '@modules/users/presentation/services';
 
 @Resolver()
 export default class GetUserResolver {

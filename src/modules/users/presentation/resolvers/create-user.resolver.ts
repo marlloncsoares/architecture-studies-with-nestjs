@@ -1,6 +1,6 @@
 import { UserInput } from '@users/infra/graphql/input';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
-import { CreateUserService } from '@users/services';
+import { CreateUserService } from '@modules/users/presentation/services';
 
 @Resolver()
 export default class CreateUserResolver {
