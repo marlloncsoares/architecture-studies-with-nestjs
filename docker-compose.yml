@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+
+  architecture-studies-white-nestjs: 
+    image: "node:${NODE_VERSION}"
+    networks:
+      - base_network
+      - mongo_estudos
+    working_dir: ${WORKING_DIR}
+    ports:
+      - "3000:${INTERNAL_PORT}"
+    # depends_on:
+    #   - mongodb-estudos-service
+    command: sh -c "npm run start:dev"
+    volumes:
+      - ./.:${WORKING_DIR}
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      NODE_PORT: ${INTERNAL_PORT}
+      MONGODB_ESTUDOS_URI: "mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@localhost:27027/${MONGODB_DATABASE}"
+      
+
+  mongodb-estudos-service:
+      image: bitnami/mongodb:latest
+      networks:
+        - base_network
+        - mongo_estudos
+      ports: 
+        - "27027:27017"
+      volumes:
+        - mongodb_estudos_data:/bitnami
+        - ./mongodb_estudos_data:/external
+      environment:
+        MONGODB_USERNAME: ${MONGODB_USERNAME}
+        MONGODB_PASSWORD: ${MONGODB_PASSWORD}
+        MONGODB_DATABASE: ${MONGODB_DATABASE}
+
+networks:
+  base_network:
+  mongo_estudos:
+
+volumes:
+  mongodb_estudos_data:

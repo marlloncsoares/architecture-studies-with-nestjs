@@ -1,0 +1,22 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UserOutput {
+  name: String
+}
+
+type Query {
+  getUser: UserOutput!
+}
+
+type Mutation {
+  createUser(input: UserInput!): Boolean!
+}
+
+input UserInput {
+  name: String!
+  gender: String!
+  birthDate: String!
+  cpf: String!
+}
