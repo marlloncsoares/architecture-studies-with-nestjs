@@ -24,10 +24,10 @@ import { CreateUserMongoDBRepository } from '@users/infra/db/mongodb/repository'
   ],
   controllers: [UserController],
   providers: [
-    CreateUserMongoDBRepository,
     CreateUserService,
     GetUserResolver,
     CreateUserResolver,
+    CreateUserMongoDBRepository,
   ],
 })
 export default class UsersModule {}

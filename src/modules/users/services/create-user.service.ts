@@ -7,10 +7,10 @@ import { CreateUserInput } from '@users/domain/protocols/input';
 export default class CreateUserService {
   private userRepository: DbCreateUser;
 
-  constructor(private readonly repository: CreateUserMongoDBRepository) {}
+  constructor(private readonly mongodb: CreateUserMongoDBRepository) {}
 
   async create(data: CreateUserInput): Promise<boolean> {
-    this.userRepository = new DbCreateUser(this.repository);
+    this.userRepository = new DbCreateUser(this.mongodb);
     this.userRepository.create(data);
     return true;
   }
